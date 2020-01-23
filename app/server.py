@@ -9,7 +9,7 @@ from fastai import *
 from fastai.vision import *
 
 model_file_url = 'https://drive.google.com/file/d/1GWwakjH-wTktpOnwgM_Fe4geSbrBAA2d/view?usp=sharing'
-model_file_name = 'stage-2'
+model_file_name = 'model'
 classes = ['horse', 'human', 'whale']
 path = Path(__file__).parent
 
@@ -29,6 +29,7 @@ async def setup_learner():
     data_bunch = ImageDataBunch.single_from_classes(path, classes,
         ds_tfms=get_transforms(), size=224).normalize(imagenet_stats)
     learn = cnn_learner(data_bunch, models.resnet34, pretrained=False)
+    print(model_file_name)
     learn.load(model_file_name)
     return learn
 
