@@ -13,6 +13,8 @@ model_file_name = 'model'
 classes = ['horse', 'human', 'whale']
 path = Path(__file__).parent
 
+print("start")
+
 app = Starlette()
 app.add_middleware(CORSMiddleware, allow_origins=['*'], allow_headers=['X-Requested-With', 'Content-Type'])
 app.mount('/static', StaticFiles(directory='app/static'))
